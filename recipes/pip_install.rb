@@ -16,45 +16,43 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+raise 'You must set attribute node.ftp-cloudfs.auth_url' if node['ftp-cloudfs']['auth_url'].nil?
+
 include_recipe 'python::pip'
 
 python_pip 'ftp-cloudfs' do
-	version node['ftp-cloudfs']['version']
- 	action :install
+  version node['ftp-cloudfs']['version']
+  action :install
 end
 
 python_pip 'python-keystoneclient' do
-	version node['ftp-cloudfs']['keystoneclient']['version']
-	action :install
+  version node['ftp-cloudfs']['keystoneclient']['version']
+  action :install
 end if node['ftp-cloudfs']['keystone-auth']
 
 directory node['ftp-cloudfs']['log-dir'] do
-	mode 00755
-	action :create
+  mode 00755
+  action :create
 end if node['ftp-cloudfs']['log-dir']
 
 directory node['ftp-cloudfs']['pid-dir'] do
-	mode 00755
-	action :create
+  mode 00755
+  action :create
 end if node['ftp-cloudfs']['pid-dir']
 
 template '/etc/init.d/ftp-cloudfs' do
-	source 'ftp-cloudfs.init.d.erb'
-	mode '0755'
-	action :create
+  source 'ftp-cloudfs.init.d.erb'
+  mode '0755'
+  action :create
 end
 
 service 'ftp-cloudfs' do
-	supports :start => true, :restart => true
-	action :enable
+  supports :start => true, :restart => true
+  action :enable
 end
 
 if node['ftp-cloudfs']['memcached']
-	include_recipe 'memcached'
-end
-
-if node['ftp-cloudfs']['auth_url']
-	Chef::Application.fatal! "You must set node.ftp-cloudfs.auth_url!"
+  include_recipe 'memcached'
 end
 
 template '/etc/ftpcloudfs.conf' do

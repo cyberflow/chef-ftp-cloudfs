@@ -1,7 +1,28 @@
 require 'spec_helper'
 
 describe 'ftp-cloudfs::pip_install' do
-  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) do
+    runner = ChefSpec::Runner.new(
+      platform: 'ubuntu',
+      version: '12.04'
+    )
+    runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
+    runner.converge(described_recipe)
+  end
+
+  context 'expected error' do
+    let(:chef_run) do
+      runner = ChefSpec::Runner.new(
+        platform: 'ubuntu',
+        version: '12.04'
+      )
+      runner.converge(described_recipe)
+    end
+
+    it 'error if node.ftp-cloudfs.auth_url.nil?' do
+      expect { chef_run }.to raise_error('You must set attribute node.ftp-cloudfs.auth_url')
+    end
+  end
 
   it 'include recipe python::pip' do
   	expect(chef_run).to include_recipe('python::pip')
@@ -27,6 +48,7 @@ describe 'ftp-cloudfs::pip_install' do
         platform: 'ubuntu',
         version: '12.04'
       )
+      runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
   	  runner.node.set['ftp-cloudfs']['log-dir'] = '/var/log/ftpcloudfs'
   	  runner.node.set['ftp-cloudfs']['pid-dir'] = '/var/run/ftpcloudfs'
   	  runner.converge(described_recipe)
@@ -54,6 +76,7 @@ describe 'ftp-cloudfs::pip_install' do
   context 'if memcached true' do
   	let(:chef_run) do
   	  runner = ChefSpec::Runner.new()
+      runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
   	  runner.node.set['ftp-cloudfs']['memcached'] = true
   	  runner.converge(described_recipe)
   	end
