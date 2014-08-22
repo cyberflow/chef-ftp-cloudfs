@@ -8,5 +8,9 @@ gem 'chefspec'
 gem 'rspec'
 gem 'rake'
 gem 'chef', '~> 11.14.2'
-gem 'kitchen-vagrant'
-gem 'test-kitchen'
+gem 'vagrant'
+
+group :kitchen  do
+  gem 'test-kitchen'
+  gem 'kitchen-vagrant'
+end
