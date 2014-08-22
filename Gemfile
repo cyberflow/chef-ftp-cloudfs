@@ -6,6 +6,8 @@ gem 'foodcritic'
 gem 'minitest'
 gem 'chefspec'
 gem 'rspec'
+gem 'rake'
+gem 'chef', '~> 11.14.2'
 
 group :kitchen  do
   gem 'test-kitchen'

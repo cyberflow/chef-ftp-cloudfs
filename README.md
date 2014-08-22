@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cyberflow/chef-ftp-cloudfs.svg?branch=master)](https://travis-ci.org/cyberflow/chef-ftp-cloudfs)
+
 ftp-cloudfs Cookbook
 ====================
 This cookbook install and configures ftp-cloudfs.
