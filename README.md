@@ -5,8 +5,8 @@ This cookbook install and configures ftp-cloudfs.
 * [https://github.com/cloudfs/ftp-cloudfs](https://github.com/cloudfs/ftp-cloudfs)
 
 Requirements
-------------
-## Platform:
+============
+#### Platform:
 * Debian 6.0+
 * Ubuntu 12.04+
 
@@ -18,7 +18,7 @@ Requirements
 - `memcached` - need if you
 
 Attributes
-----------
+==========
 #### ftp-cloudfs::default
 * `default['ftp-cloudfs']['version']` - may be use for pin specified version of ftp-cloudfs. Default `latest`
 * `defaul['ftp-cloudfs']['keystone-auth']` - determines whether or not use Auth v2.0 (keystone auth). Default `false`
@@ -46,7 +46,7 @@ Attributes
 * `default['ftp-cloudfs']['rackspace_service_net']` - Use Rackspace's ServiceNet internal network. Default `false`
 
 Usage
------
+=====
 #### ftp-cloudfs::default
 
 ```json
@@ -59,7 +59,7 @@ Usage
 ```
 
 Contributing
-------------
+============
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -67,8 +67,21 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
+Testing
+=======
+
+This cookbook is set up to test using
+* knife test
+* foodcritic
+* chefspec
+* test-kitchen
+
+To launch all the tests, run:
+* bundle install
+* bundle exec strainer test
+
 License and Authors
--------------------
+===================
 Author:: Dmitry R. <dmitry.r@cyberflow.net>
 Copyright:: 2014, Dmitry R.
 
