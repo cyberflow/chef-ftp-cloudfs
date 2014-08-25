@@ -80,22 +80,22 @@ keystone-auth = yes
 
 # Region name to be used with Auth 2.0 (optional)
 <% if node['ftp-cloudfs']['keystone-auth']%>
-keystone-region-name = @keystone_region_name
+keystone-region-name = <%= @keystone_region_name %>
 <% end %>
 
 # Tenant separator to be used with Auth 2.0 (eg. TENANT.USERNAME)
 <% if node['ftp-cloudfs']['keystone-auth']%>
-keystone-tenant-separator = @keystone_tenant_separator
+keystone-tenant-separator = <%= @keystone_tenant_separator %>
 <% end %>
 
 # Service type to be used with Auth 2.0.
 <% if node['ftp-cloudfs']['keystone-auth']%>
-keystone-service-type = @keystone_service_type
+keystone-service-type = <%= @keystone_service_type %>
 <% end %>
 
 # Endpoint type to be used with Auth 2.0.
 <% if node['ftp-cloudfs']['keystone-auth']%>
-keystone-endpoint-type = @keystone_endpoint_type
+keystone-endpoint-type = <%= @keystone_endpoint_type %>
 <% end %>
 
 # Use Rackspace's ServiceNet internal network.

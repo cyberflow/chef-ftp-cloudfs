@@ -17,7 +17,7 @@ Requirements
 
 #### cookboks
 - `python` - ftp-cloudfs needs this cookbook for install python-pip.
-- `memcached` - need if you
+- `memcached` - need if you want use memcached for caching auth.
 
 Attributes
 ==========
@@ -33,7 +33,7 @@ Attributes
 * `default['ftp-cloudfs']['auth_url']` - auth url. Required. Default `nil`
 * `default['ftp-cloudfs']['memcache']` - memcache server. Default `127.0.0.1:11211`
 * `default['ftp-cloudfs']['max_cons_per_ip']` - maximum number of client connections per IP. Default unlim.
-* `default['ftp-cloudfs']['split_large_files']` - large file support. Default unsupport.
+* `default['ftp-cloudfs']['split_large_files']` - large file support. Default unsupport. Type string.
 * `default['ftp-cloudfs']['hide_part_dir']` - hide .part directory from large files. Default `no`
 * `default['ftp-cloudfs']['verbose']` - be verbose on logging. Default `no`
 * `default['ftp-cloudfs']['syslog']` - enable logging to the system logger. Default `no`
@@ -54,6 +54,9 @@ Usage
 ```json
 {
   "name":"my_node",
+  "ftp-cloudfs": {
+    "auth_url": "http://your.auth.url"
+  },
   "run_list": [
     "recipe[ftp-cloudfs]"
   ]
@@ -84,7 +87,7 @@ To launch all the tests, run:
 
 License and Authors
 ===================
-Author:: Dmitry R. <dmitry.r@cyberflow.net>
+Author:: Dmitry R. <dmitry.r@cyberflow.net>  
 Copyright:: 2014, Dmitry R.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
