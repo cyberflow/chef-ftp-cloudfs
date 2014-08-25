@@ -16,7 +16,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC=ftp-cloudfs                # Introduce a short description here
 NAME=ftp-cloudfs                # Introduce the short server's name here
 CONFIGFILE=/etc/ftpcloudfs.conf # Configuration file
-DAEMON=/usr/bin/ftpcloudfs      # Introduce the server's location here
+DAEMON=/usr/local/bin/ftpcloudfs      # Introduce the server's location here
 LOGDIR=<%= node['ftp-cloudfs']['log-dir'] %>         # Logs directory
 LOGFILE=${LOGDIR}/<%= node['ftp-cloudfs']['logfile'] %>   # Log file
 DAEMON_ARGS="-l ${LOGFILE}"     # Arguments to run the daemon with
@@ -49,11 +49,11 @@ do_start()
 	if [ ! -d ${PIDDIR} ]
 	then
 	        mkdir -m 0700 -p ${PIDDIR}
-       		chown -R ftpcloudfs:ftpcloudfs ${PIDDIR}
+       		# chown -R ftpcloudfs:ftpcloudfs ${PIDDIR}
 	fi
 	# create PID file
-	touch ${PIDFILE}
-	chown ftpcloudfs:ftpcloudfs ${PIDFILE}
+	# touch ${PIDFILE}
+	# chown ftpcloudfs:ftpcloudfs ${PIDFILE}
 	# Return
 	#   0 if daemon has been started
 	#   1 if daemon was already running

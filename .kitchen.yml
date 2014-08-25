@@ -6,7 +6,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-14.04
+  - name: ubuntu-12.04
 
 suites:
   - name: default
@@ -14,6 +14,15 @@ suites:
       - recipe[ftp-cloudfs::default]
     attributes: {
     	"ftp-cloudfs": {
-    		"auth_url": "http://test/url"
+    		"keystoneclient": { "version": "0.3.2" },
+    		"auth_url": "http://test/url",
+    		"bind_address": "127.0.0.1",
+    		"memcached": true,
+    		"syslog": "yes",
+    		"split_large_files": "5000",
+    		"hide_part_dir": "yes",
+    		"keystone-auth": true,
+    		"keystone_region_name": "region1",
+    		"verbose": "yes"
     	}
     }
