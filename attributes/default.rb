@@ -46,3 +46,11 @@ default['ftp-cloudfs']['keystone_service_type'] = 'object-store'
 default['ftp-cloudfs']['keystone_endpoint_type'] = 'publicURL'
 # Use Rackspace's ServiceNet internal network
 default['ftp-cloudfs']['rackspace_service_net'] = false
+
+# Git install
+# git repository
+default['ftp-cloudfs']['repository'] = 'https://github.com/cloudfs/ftp-cloudfs.git'
+# git revision
+default['ftp-cloudfs']['revision'] = 'master'
+# git install path
+default['ftp-cloudfs']['install-path'] = '/opt'
