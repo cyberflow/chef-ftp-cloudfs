@@ -11,5 +11,5 @@ before_install:
 before_script:
   - bundle exec berks install
 script:
-  - bundle exec strainer test --except kitchen
+  - bundle exec strainer test --except kitchen --except knife
   - bundle exec rake knife
