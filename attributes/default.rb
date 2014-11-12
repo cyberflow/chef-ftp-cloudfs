@@ -23,11 +23,11 @@ default['ftp-cloudfs']['max_cons_per_ip'] = 0
 # large file support.
 default['ftp-cloudfs']['split_large_files'] = ''
 # hide .part directory from large files
-default['ftp-cloudfs']['hide_part_dir'] = "no"
+default['ftp-cloudfs']['hide_part_dir'] = 'no'
 # be verbose on logging
-default['ftp-cloudfs']['verbose'] = "no"
+default['ftp-cloudfs']['verbose'] = 'no'
 # enable logging to the system logger
-default['ftp-cloudfs']['syslog'] = "no"
+default['ftp-cloudfs']['syslog'] = 'no'
 # log file name
 default['ftp-cloudfs']['logfile'] = 'ftpcloudfs.log'
 # pid file name

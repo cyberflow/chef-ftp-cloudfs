@@ -11,6 +11,6 @@ describe 'ftp-cloudfs::default' do
   end
 
   it 'include recipe' do
-  	expect(chef_run).to include_recipe('ftp-cloudfs::pip_install')
+    expect(chef_run).to include_recipe('ftp-cloudfs::pip_install')
   end
 end

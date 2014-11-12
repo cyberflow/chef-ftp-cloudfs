@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-raise 'You must set attribute node.ftp-cloudfs.auth_url' if node['ftp-cloudfs']['auth_url'].nil?
+fail 'You must set attribute node.ftp-cloudfs.auth_url' if node['ftp-cloudfs']['auth_url'].nil?
 
 include_recipe 'python::pip'
 
@@ -51,28 +51,26 @@ service 'ftp-cloudfs' do
   action :enable
 end
 
-if node['ftp-cloudfs']['memcached']
-  include_recipe 'memcached'
-end
+include_recipe 'memcached' if node['ftp-cloudfs']['memcached']
 
 template '/etc/ftpcloudfs.conf' do
   source 'ftpcloudfs.conf.erb'
   variables(
-  					:port => node['ftp-cloudfs']['port'],
-            :bind_address => node['ftp-cloudfs']['bind_address'] || '127.0.0.1',
-            :auth_url => node['ftp-cloudfs']['auth_url'],
-            :memcache => node['ftp-cloudfs']['memcache'],
-            :max_cons_per_ip => node['ftp-cloudfs']['max_cons_per_ip'],
-            :split_large_files => node['ftp-cloudfs']['split_large_files'],
-            :hide_part_dir => node['ftp-cloudfs']['hide_part_dir'],
-            :verbose => node['ftp-cloudfs']['verbose'],
-            :syslog => node['ftp-cloudfs']['syslog'],
-            :logfile => "#{node['ftp-cloudfs']['log-dir']}/#{node['ftp-cloudfs']['logfile']}",
-            :pidfile => "#{node['ftp-cloudfs']['pid-dir']}/#{node['ftp-cloudfs']['pidfile']}",
-            :keystone_region_name => node['ftp-cloudfs']['keystone_region_name'],
+            :port                      => node['ftp-cloudfs']['port'],
+            :bind_address              => node['ftp-cloudfs']['bind_address'] || '127.0.0.1',
+            :auth_url                  => node['ftp-cloudfs']['auth_url'],
+            :memcache                  => node['ftp-cloudfs']['memcache'],
+            :max_cons_per_ip           => node['ftp-cloudfs']['max_cons_per_ip'],
+            :split_large_files         => node['ftp-cloudfs']['split_large_files'],
+            :hide_part_dir             => node['ftp-cloudfs']['hide_part_dir'],
+            :verbose                   => node['ftp-cloudfs']['verbose'],
+            :syslog                    => node['ftp-cloudfs']['syslog'],
+            :logfile                   => "#{node['ftp-cloudfs']['log-dir']}/#{node['ftp-cloudfs']['logfile']}",
+            :pidfile                   => "#{node['ftp-cloudfs']['pid-dir']}/#{node['ftp-cloudfs']['pidfile']}",
+            :keystone_region_name      => node['ftp-cloudfs']['keystone_region_name'],
             :keystone_tenant_separator => node['ftp-cloudfs']['keystone_tenant_separator'],
-            :keystone_service_type => node['ftp-cloudfs']['keystone_service_type'],
-            :keystone_endpoint_type => node['ftp-cloudfs']['keystone_endpoint_type']
+            :keystone_service_type     => node['ftp-cloudfs']['keystone_service_type'],
+            :keystone_endpoint_type    => node['ftp-cloudfs']['keystone_endpoint_type']
             )
   notifies :restart, 'service[ftp-cloudfs]'
 end

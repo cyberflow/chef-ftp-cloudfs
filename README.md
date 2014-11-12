@@ -1,3 +1,4 @@
+[![Cookbook Version](http://img.shields.io/cookbook/v/ftp-cloudfs.svg)](https://community.opscode.com/cookbooks/ftp-cpudfs)
 [![Build Status](https://travis-ci.org/cyberflow/chef-ftp-cloudfs.svg?branch=master)](https://travis-ci.org/cyberflow/chef-ftp-cloudfs)
 
 ftp-cloudfs Cookbook
@@ -80,6 +81,7 @@ This cookbook is set up to test using
 * foodcritic
 * chefspec
 * test-kitchen
+* rubocop
 
 To launch all the tests, run:
 * bundle install
