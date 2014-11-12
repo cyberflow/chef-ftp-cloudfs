@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'ftp-cloudfs::pip_install' do
   let(:chef_run) do
-    runner = ChefSpec::Runner.new(
+    runner = ChefSpec::ServerRunner.new(
       platform: 'ubuntu',
       version: '12.04'
     )
@@ -12,7 +12,7 @@ describe 'ftp-cloudfs::pip_install' do
 
   context 'expected error' do
     let(:chef_run) do
-      runner = ChefSpec::Runner.new(
+      runner = ChefSpec::ServerRunner.new(
         platform: 'ubuntu',
         version: '12.04'
       )
@@ -44,7 +44,7 @@ describe 'ftp-cloudfs::pip_install' do
 
   context 'if directory determined' do
     let(:chef_run) do
-      runner = ChefSpec::Runner.new(
+      runner = ChefSpec::ServerRunner.new(
         platform: 'ubuntu',
         version: '12.04'
       )
@@ -75,7 +75,7 @@ describe 'ftp-cloudfs::pip_install' do
 
   context 'if memcached true' do
     let(:chef_run) do
-      runner = ChefSpec::Runner.new
+      runner = ChefSpec::ServerRunner.new
       runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
       runner.node.set['ftp-cloudfs']['memcached'] = true
       runner.converge(described_recipe)

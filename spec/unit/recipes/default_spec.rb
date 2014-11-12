@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'ftp-cloudfs::default' do
   let(:chef_run)do
-    runner = ChefSpec::Runner.new(
+    runner = ChefSpec::ServerRunner.new(
       platform: 'ubuntu',
       version: '12.04'
     )
