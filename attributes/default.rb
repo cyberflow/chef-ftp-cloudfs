@@ -1,3 +1,5 @@
+# specified pip install package
+default['ftp-cloudfs']['package'] = 'ftp-cloudfs'
 # specified version of ftp-cloudfs
 default['ftp-cloudfs']['version'] = 'latest'
 # determines whether or not use Auth v2.0 (keystone auth)

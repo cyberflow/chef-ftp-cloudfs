@@ -20,7 +20,7 @@ fail 'You must set attribute node.ftp-cloudfs.auth_url' if node['ftp-cloudfs']['
 
 include_recipe 'python::pip'
 
-python_pip 'ftp-cloudfs' do
+python_pip node['ftp-cloudfs']['package'] do
   version node['ftp-cloudfs']['version']
   action :install
 end
