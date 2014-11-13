@@ -2,6 +2,10 @@ ftp-cloudfs CHANGELOG
 =====================
 
 This file is used to list changes made in each version of the ftp-cloudfs cookbook.
+0.1.2
+-----
+- add attribute for pip resource name
+
 0.1.1
 -----
 - fix sintax error in ftpcloudfs.conf.erb
