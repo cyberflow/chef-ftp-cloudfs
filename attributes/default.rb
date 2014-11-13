@@ -1,3 +1,5 @@
+# specified pip install package
+default['ftp-cloudfs']['package'] = 'ftp-cloudfs'
 # specified version of ftp-cloudfs
 default['ftp-cloudfs']['version'] = 'latest'
 # determines whether or not use Auth v2.0 (keystone auth)
@@ -23,11 +25,11 @@ default['ftp-cloudfs']['max_cons_per_ip'] = 0
 # large file support.
 default['ftp-cloudfs']['split_large_files'] = ''
 # hide .part directory from large files
-default['ftp-cloudfs']['hide_part_dir'] = "no"
+default['ftp-cloudfs']['hide_part_dir'] = 'no'
 # be verbose on logging
-default['ftp-cloudfs']['verbose'] = "no"
+default['ftp-cloudfs']['verbose'] = 'no'
 # enable logging to the system logger
-default['ftp-cloudfs']['syslog'] = "no"
+default['ftp-cloudfs']['syslog'] = 'no'
 # log file name
 default['ftp-cloudfs']['logfile'] = 'ftpcloudfs.log'
 # pid file name
@@ -46,3 +48,11 @@ default['ftp-cloudfs']['keystone_service_type'] = 'object-store'
 default['ftp-cloudfs']['keystone_endpoint_type'] = 'publicURL'
 # Use Rackspace's ServiceNet internal network
 default['ftp-cloudfs']['rackspace_service_net'] = false
+
+# Git install
+# git repository
+default['ftp-cloudfs']['repository'] = 'https://github.com/cloudfs/ftp-cloudfs.git'
+# git revision
+default['ftp-cloudfs']['revision'] = 'master'
+# git install path
+default['ftp-cloudfs']['install-path'] = '/opt'

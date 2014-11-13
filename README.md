@@ -1,3 +1,4 @@
+[![Cookbook Version](http://img.shields.io/cookbook/v/ftp-cloudfs.svg)](https://community.opscode.com/cookbooks/ftp-cpudfs)
 [![Build Status](https://travis-ci.org/cyberflow/chef-ftp-cloudfs.svg?branch=master)](https://travis-ci.org/cyberflow/chef-ftp-cloudfs)
 
 ftp-cloudfs Cookbook
@@ -22,6 +23,7 @@ Requirements
 Attributes
 ==========
 #### ftp-cloudfs::default
+* `default['ftp-cloudfs']['package']` - may be use for install ftp-cloudfs from git or other source. Default `ftp-cloudfs`
 * `default['ftp-cloudfs']['version']` - may be use for pin specified version of ftp-cloudfs. Default `latest`
 * `defaul['ftp-cloudfs']['keystone-auth']` - determines whether or not use Auth v2.0 (keystone auth). Default `false`
 * `default['ftp-cloudfs']['keystoneclient']['version']` - may be use for pin specified version of python-keystoneclient. Default `latest`
@@ -33,7 +35,7 @@ Attributes
 * `default['ftp-cloudfs']['auth_url']` - auth url. Required. Default `nil`
 * `default['ftp-cloudfs']['memcache']` - memcache server. Default `127.0.0.1:11211`
 * `default['ftp-cloudfs']['max_cons_per_ip']` - maximum number of client connections per IP. Default unlim.
-* `default['ftp-cloudfs']['split_large_files']` - large file support. Default unsupport. Type string.
+* `default['ftp-cloudfs']['split_large_files']` - large file support. Default unsupport. Type string
 * `default['ftp-cloudfs']['hide_part_dir']` - hide .part directory from large files. Default `no`
 * `default['ftp-cloudfs']['verbose']` - be verbose on logging. Default `no`
 * `default['ftp-cloudfs']['syslog']` - enable logging to the system logger. Default `no`
@@ -80,6 +82,7 @@ This cookbook is set up to test using
 * foodcritic
 * chefspec
 * test-kitchen
+* rubocop
 
 To launch all the tests, run:
 * bundle install

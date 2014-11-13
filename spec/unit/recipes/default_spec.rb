@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'ftp-cloudfs::default' do
   let(:chef_run)do
-    runner = ChefSpec::Runner.new(
+    runner = ChefSpec::ServerRunner.new(
       platform: 'ubuntu',
       version: '12.04'
     )
@@ -11,6 +11,6 @@ describe 'ftp-cloudfs::default' do
   end
 
   it 'include recipe' do
-  	expect(chef_run).to include_recipe('ftp-cloudfs::pip_install')
+    expect(chef_run).to include_recipe('ftp-cloudfs::pip_install')
   end
 end
