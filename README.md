@@ -15,6 +15,7 @@ Requirements
 
 #### packages
 - `python-pip` - ftp-cloudfs needs python-pip to be installed over pip.
+- `python-dev` - need for compile python-keystoneclient
 
 #### cookboks
 - `python` - ftp-cloudfs needs this cookbook for install python-pip.

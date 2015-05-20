@@ -18,6 +18,8 @@
 #
 fail 'You must set attribute node.ftp-cloudfs.auth_url' if node['ftp-cloudfs']['auth_url'].nil?
 
+package 'python-dev'
+
 include_recipe 'python::pip'
 
 python_pip node['ftp-cloudfs']['package'] do

@@ -1,7 +1,11 @@
 ftp-cloudfs CHANGELOG
 =====================
-
 This file is used to list changes made in each version of the ftp-cloudfs cookbook.
+
+0.1.3
+-----
+- #4 - fix problem with install python-keystoneclient
+
 0.1.2
 -----
 - add attribute for pip resource name
