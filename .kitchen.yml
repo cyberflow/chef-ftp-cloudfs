@@ -14,7 +14,6 @@ suites:
       - recipe[ftp-cloudfs::default]
     attributes: {
     	"ftp-cloudfs": {
-    		"keystoneclient": { "version": "0.3.2" },
     		"auth_url": "http://test/url",
     		"bind_address": "127.0.0.1",
     		"memcached": true,
