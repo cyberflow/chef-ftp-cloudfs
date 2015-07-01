@@ -74,7 +74,7 @@ describe 'ftp-cloudfs::pip_install' do
   end
 
   it 'ftpcloudfs config does not contain memcached directive' do
-      expect(chef_run).to_not render_file('/etc/ftpcloudfs.conf').with_content('memcache')
+    expect(chef_run).to_not render_file('/etc/ftpcloudfs.conf').with_content('memcache')
   end
 
   context 'if memcached local' do
