@@ -73,16 +73,42 @@ describe 'ftp-cloudfs::pip_install' do
     expect(chef_run).to_not include_recipe('memcached')
   end
 
-  context 'if memcached true' do
+  it 'ftpcloudfs config does not contain memcached directive' do
+    expect(chef_run).to_not render_file('/etc/ftpcloudfs.conf').with_content('memcache')
+  end
+
+  context 'if memcached local' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
       runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
-      runner.node.set['ftp-cloudfs']['memcached'] = true
+      runner.node.set['ftp-cloudfs']['memcached'] = 'local'
       runner.converge(described_recipe)
     end
 
     it 'include recipe memcached' do
       expect(chef_run).to include_recipe('memcached')
+    end
+
+    it 'ftpcloudfs config contain memcached directive' do
+      expect(chef_run).to render_file('/etc/ftpcloudfs.conf').with_content('memcache = 127.0.0.1:11211')
+    end
+  end
+
+  context 'if memcached external' do
+    let(:chef_run) do
+      runner = ChefSpec::ServerRunner.new
+      runner.node.set['ftp-cloudfs']['auth_url'] = 'http://test/url'
+      runner.node.set['ftp-cloudfs']['memcached'] = 'external'
+      runner.node.set['ftp-cloudfs']['memcache'] = ['111.111.111.111:11211']
+      runner.converge(described_recipe)
+    end
+
+    it 'does not include memcached' do
+      expect(chef_run).to_not include_recipe('memcached')
+    end
+
+    it 'ftpcloudfs config contain memcached directive' do
+      expect(chef_run).to render_file('/etc/ftpcloudfs.conf').with_content('memcache = 111.111.111.111:11211')
     end
   end
 

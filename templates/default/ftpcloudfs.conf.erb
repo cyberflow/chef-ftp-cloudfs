@@ -17,19 +17,19 @@ auth-url = <%= @auth_url %>
 # DEPRECATED: Number of workers to use (no effect)
 # workers = (empty)
 
+<% if node['ftp-cloudfs']['memcached']%>
 # Memcache server(s) for external cache (eg 127.0.0.1:11211)
 # Can be a comma-separated list.
-<% if node['ftp-cloudfs']['memcached']%>
-memcache = <%= @memcache %>
+memcache = <%= @memcache.join(', ') %>
 <% end %>
 
 # Maximum number of client connections per IP
 # default is 0 (no limit)
 max-cons-per-ip = <%= @max_cons_per_ip %>
+<% unless @split_large_files.empty? %>
 
 # Large file support.
 # Specify a size in MB to split large files.
-<% unless @split_large_files.empty? %>
 split-large-files = <%= @split_large_files %>
 <% end %>
 
@@ -41,26 +41,26 @@ verbose = <%= @verbose %>
 
 # Enable logging to the system logger.
 syslog = <%= @syslog %>
+<% unless node['ftp-cloudfs']['log-dir'].nil? %>
 
 # Log file location.
-<% unless node['ftp-cloudfs']['log-dir'].nil? %>
 log-file = <%= @logfile %>
 <% end %>
+<% unless node['ftp-cloudfs']['pid-dir'].nil? %>
 
 # Pid file location when in daemon mode.
-<% unless node['ftp-cloudfs']['pid-dir'].nil? %>
 pid-file = <%= @pidfile %>
 <% end %>
+<% unless node['ftp-cloudfs']['uid'].nil? %>
 
 # UID to drop privileges when in daemon mode.
 # uid = (empty)
-<% unless node['ftp-cloudfs']['uid'].nil? %>
 uid = <%=  node['ftp-cloudfs']['uid'] %>
 <% end %>
+<% unless node['ftp-cloudfs']['gid'].nil? %>
 
 # GID to drop priviliges when in daemon mode.
 # gid = (empty)
-<% unless node['ftp-cloudfs']['gid'].nil? %>
 gid = <%= node['ftp-cloudfs']['gid'] %>
 <% end %>
 
@@ -77,24 +77,24 @@ gid = <%= node['ftp-cloudfs']['gid'] %>
 <% if node['ftp-cloudfs']['keystone-auth']%>
 keystone-auth = yes
 <% end %>
+<% if node['ftp-cloudfs']['keystone-auth']%>
 
 # Region name to be used with Auth 2.0 (optional)
-<% if node['ftp-cloudfs']['keystone-auth']%>
 keystone-region-name = <%= @keystone_region_name %>
 <% end %>
+<% if node['ftp-cloudfs']['keystone-auth']%>
 
 # Tenant separator to be used with Auth 2.0 (eg. TENANT.USERNAME)
-<% if node['ftp-cloudfs']['keystone-auth']%>
 keystone-tenant-separator = <%= @keystone_tenant_separator %>
 <% end %>
+<% if node['ftp-cloudfs']['keystone-auth']%>
 
 # Service type to be used with Auth 2.0.
-<% if node['ftp-cloudfs']['keystone-auth']%>
 keystone-service-type = <%= @keystone_service_type %>
 <% end %>
+<% if node['ftp-cloudfs']['keystone-auth']%>
 
 # Endpoint type to be used with Auth 2.0.
-<% if node['ftp-cloudfs']['keystone-auth']%>
 keystone-endpoint-type = <%= @keystone_endpoint_type %>
 <% end %>
 
