@@ -10,7 +10,7 @@ default['ftp-cloudfs']['keystoneclient']['version'] = 'latest'
 default['ftp-cloudfs']['log-dir'] = '/var/log/ftp-cloudfs'
 # path to pid file
 default['ftp-cloudfs']['pid-dir'] = '/var/run/ftp-cloudfs'
-# use nencached
+# use memcached
 default['ftp-cloudfs']['memcached'] = false
 # udp port for ftp-cloudfs
 default['ftp-cloudfs']['port'] = 21
@@ -19,7 +19,7 @@ default['ftp-cloudfs']['bind_address'] = nil
 # auth url
 default['ftp-cloudfs']['auth_url'] = nil
 # memcache server
-default['ftp-cloudfs']['memcache'] = '127.0.0.1:11211'
+default['ftp-cloudfs']['memcache'] = ['127.0.0.1:11211']
 # maximum number of client connections per IP
 default['ftp-cloudfs']['max_cons_per_ip'] = 0
 # large file support.

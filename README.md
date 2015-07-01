@@ -30,11 +30,11 @@ Attributes
 * `default['ftp-cloudfs']['keystoneclient']['version']` - may be use for pin specified version of python-keystoneclient. Default `latest`
 * `default['ftp-cloudfs']['log-dir']` - path to log file. Default `/var/log/ftp=cloudfs`
 * `default['ftp-cloudfs']['pid-dir']` - path to pid file. Default `/var/run/ftp-cloudfs`
-* `default['ftp-cloudfs']['memcached']` - use nencached. Default `false`
+* `default['ftp-cloudfs']['memcached']` - install local memcached or use external. Default `none`. May be `local or external or false`
 * `default['ftp-cloudfs']['port']` - udp port for ftp-cloudfs. Default `21`
 * `default['ftp-cloudfs']['bind_address']` - bind address. Default `127.0.0.1`
 * `default['ftp-cloudfs']['auth_url']` - auth url. Required. Default `nil`
-* `default['ftp-cloudfs']['memcache']` - memcache server. Default `127.0.0.1:11211`
+* `default['ftp-cloudfs']['memcache']` - array of memcache servers. Default `['127.0.0.1:11211']`
 * `default['ftp-cloudfs']['max_cons_per_ip']` - maximum number of client connections per IP. Default unlim.
 * `default['ftp-cloudfs']['split_large_files']` - large file support. Default unsupport. Type string
 * `default['ftp-cloudfs']['hide_part_dir']` - hide .part directory from large files. Default `no`

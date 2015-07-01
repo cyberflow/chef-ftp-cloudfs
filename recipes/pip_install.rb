@@ -53,7 +53,7 @@ service 'ftp-cloudfs' do
   action :enable
 end
 
-include_recipe 'memcached' if node['ftp-cloudfs']['memcached']
+include_recipe 'memcached' if node['ftp-cloudfs']['memcached'] == 'local'
 
 template '/etc/ftpcloudfs.conf' do
   source 'ftpcloudfs.conf.erb'
